@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LibraryDomain.Model.Author>
+
+@{
+    ViewData["Title"] = "B3";
+}
+
+<h1>Знайти імена та прізвища авторів, всі книги яких є у видавництві ___.</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Queries" asp-action="B3" method="post">
+            <div class="form-group">
+                <label for="PublisherId" class="control-label">Видавництво</label>
+                <select name="publisherId" asp-items="ViewBag.PublisherId" class="form-control" required>
+                    <option value="">Оберіть видавництво</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <p> </p>
+                <input type="submit" value="Виконати" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ім'я</th>
+                <th>Прізвище</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var author in Model)
+            {
+                <tr>
+                    <td>@author.Name</td>
+                    <td>@author.Surname</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+

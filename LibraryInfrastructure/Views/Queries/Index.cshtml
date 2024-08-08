@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Запити";
+}
+
+<h1>Запити</h1>
+
+<style>
+    .large-font {
+        font-size: 1.5em; 
+        text-decoration: none;
+    }
+</style>
+
+<hr />
+<ul class="large-font">
+    <li>
+        <a asp-controller="Queries" asp-action="A1">Запит 1: Знайти назви бібліотек, директори яких ___ статі.</a>
+    </li>
+    <li>
+        <a asp-controller="Queries" asp-action="A2">Запит 2: Знайти назви та описи видавництв, книги яких є в ___ бібліотеці.</a>
+    </li>
+    <li>
+        <a asp-controller="Queries" asp-action="A3">Запит 3: Знайти назви та адреси бібліотек, де є книга ___ .</a>
+    </li>
+    <li>
+        <a asp-controller="Queries" asp-action="A4">Запит 4: Знайти назви та типи бібліотек, директор якої має таку адресу електронної пошти: ___ .</a>
+    </li>
+    <li>
+        <a asp-controller="Queries" asp-action="A5">Запит 5: Знайти назви та адреси бібліотек, у яких >n книг від ___ автора.</a>
+    </li>
+    <li>
+        <a asp-controller="Queries" asp-action="B1">Запит 6*: Знайти назви та адреса бібліотек, у яких є всі книги автора ___.</a>
+    </li>
+    <li>
+        <a asp-controller="Queries" asp-action="B2">Запит 7*: Визначити назви видавництв, всі книги яких є в бібліотеках з типом ___ і обов'язково ще якихось.</a>
+    </li>
+    <li>
+        <a asp-controller="Queries" asp-action="B3">Запит 8*: Знайти імена та прізвища авторів, всі книги яких є у видавництві ___.</a>
+    </li>
+</ul>

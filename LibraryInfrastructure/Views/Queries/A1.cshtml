@@ -1,0 +1,54 @@
+﻿@model IEnumerable<LibraryDomain.Model.Library>
+
+@{
+    ViewData["Title"] = "A1";
+}
+
+<h2>Знайти назви бібліотек, директори яких ___ статі.</h2>
+<div>
+    <a asp-action="Index">Повернутись до запитів</a>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Queries" asp-action="A1" method="get">
+            <div class="form-group">
+                <label for="GenderId" class="control-label">Стать</label>
+                <select name="gender" class="form-control" asp-items="ViewBag.GenderId" required>
+                    <option value="">Оберіть стать</option>
+                </select>
+            </div>
+            <div class="form-group">
+                 <p> </p>
+                <input type="submit" value="Виконати" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+<h2>Результат</h2>
+<div class="col-sm-2">
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Назва бібліотеки</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var library in Model)
+            {
+                <tr>
+                    <td>@library.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+</div class="col-sm-2">
+
+
+

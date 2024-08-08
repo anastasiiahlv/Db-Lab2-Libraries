@@ -1,0 +1,66 @@
+﻿@model LibraryDomain.Model.Library
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Про бібліотеку</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.Director != null)
+            {
+                @Model.Director.Name @(" ") @Model.Director.Surname
+            }
+            else
+            {
+                <span>Без директора</span>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Книги в бібліотеці:
+        </dt>
+        <dd class="col-sm-10">
+            @if (ViewBag.BookTitles != null && ViewBag.BookTitles.Count > 0)
+            {
+                <ul>
+                    @foreach (var title in ViewBag.BookTitles)
+                    {
+                        <li>@title</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <span>В цій бібліотеці немає книг.</span>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Редагувати</a> |
+    <a asp-action="Index">Повернутись до бібліотек</a>
+</div>

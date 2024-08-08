@@ -1,0 +1,58 @@
+﻿@model LibraryDomain.Model.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Про книгу</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Автори
+        </dt>
+        <dd class="col-sm-10">
+            <span>
+                @string.Join(", ", Model.Authors.Select(a => a.Name + " " + a.Surname))
+            </span>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Publisher)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Publisher.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Є в бібліотеках
+        </dt>
+        <dd class="col-sm-10">
+            <span>
+                @if (Model.Libraries.Count != 0)
+                {
+                    @string.Join(", ", Model.Libraries.Select(l => l.Name))
+                }
+                else
+                {
+                    @("Немає в жодній бібліотеці")
+                }
+            </span>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Редагувати</a> |
+    <a asp-action="Index">Повернутись до книг</a>
+</div>

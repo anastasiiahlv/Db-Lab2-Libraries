@@ -1,0 +1,48 @@
+﻿@model LibraryDomain.Model.Publisher
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Про видавництво</h1>
+
+<div>
+    <h4>Видавництво</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Info)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Info)
+        </dd>
+        <dt class="col-sm-2">
+            Наявні книги:
+        </dt>
+        <dd class="col-sm-10">
+            @if (ViewBag.BookTitles != null && ViewBag.BookTitles.Count > 0)
+            {
+                <ul>
+                    @foreach (var title in ViewBag.BookTitles)
+                    {
+                        <li>@title</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <span>У цього видавництва немає книг.</span>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Редагувати</a> |
+    <a asp-action="Index">Повернутись до видавництв</a>
+</div>
